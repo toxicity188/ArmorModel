@@ -28,6 +28,7 @@ public record ArmorData(
         for (String texture : textures) {
             map.put(Integer.toString(i++), texture);
         }
+        map.put("particle", textures[0]);
         return new ArmorData(
                 Collections.unmodifiableMap(map),
                 elements

@@ -4,6 +4,6 @@
 ### API
 ```kotlin
 dependencies { 
-    implementation("io.github.toxicity188:ArmorModel:VERSION")
+    implementation("io.github.toxicity188:armormodel:VERSION")
 }
 ```
