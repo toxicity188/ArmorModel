@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.Map;
 
 public record ArmorData(
-        @NotNull Map<String, String> textures,
-        @NotNull List<JsonElement> elements
+    @NotNull Map<String, String> textures,
+    @NotNull List<JsonElement> elements
 ) {
     public static final Gson GSON = new GsonBuilder()
-            .disableHtmlEscaping()
-            .create();
+        .disableHtmlEscaping()
+        .create();
 
     public @NotNull String toJson() {
         return GSON.toJson(this);
@@ -30,8 +30,8 @@ public record ArmorData(
         }
         map.put("particle", textures[0]);
         return new ArmorData(
-                Collections.unmodifiableMap(map),
-                elements
+            Collections.unmodifiableMap(map),
+            elements
         );
     }
 }

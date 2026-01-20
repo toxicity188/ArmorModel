@@ -14,9 +14,9 @@ import static kr.toxicity.library.armormodel.ArmorUtil.EMPTY;
 import static kr.toxicity.library.armormodel.ArmorUtil.compositeJson;
 
 public record ArmorDataResult(
-        @NotNull ArmorNamespaceKey key,
-        @Nullable JsonObject armor,
-        @Nullable JsonObject armorTrim
+    @NotNull ArmorNamespaceKey key,
+    @Nullable JsonObject armor,
+    @Nullable JsonObject armorTrim
 ) {
 
     public static final int WHITE_INDEX = 0xFFFFFF;
@@ -44,15 +44,15 @@ public record ArmorDataResult(
 
     public @NotNull ArmorCustomModelData customModelData(@NotNull String type, int armorTint) {
         return new ArmorCustomModelData(key, Collections.singletonList(type), IntList.of(
-                armorTint,
-                WHITE_INDEX,
-                WHITE_INDEX,
-                WHITE_INDEX,
-                WHITE_INDEX,
-                WHITE_INDEX,
-                WHITE_INDEX,
-                WHITE_INDEX,
-                WHITE_INDEX
+            armorTint,
+            WHITE_INDEX,
+            WHITE_INDEX,
+            WHITE_INDEX,
+            WHITE_INDEX,
+            WHITE_INDEX,
+            WHITE_INDEX,
+            WHITE_INDEX,
+            WHITE_INDEX
         ));
     }
 

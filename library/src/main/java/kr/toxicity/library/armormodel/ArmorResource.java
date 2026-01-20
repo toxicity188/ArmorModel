@@ -30,8 +30,8 @@ public enum ArmorResource {
 
     public @NotNull ArmorData read(@NotNull StreamLoader loader) {
         try (
-                var stream = loader.load(path);
-                var reader = new InputStreamReader(stream, StandardCharsets.UTF_8)
+            var stream = loader.load(path);
+            var reader = new InputStreamReader(stream, StandardCharsets.UTF_8)
         ) {
             return ArmorData.GSON.fromJson(reader, ArmorData.class);
         } catch (IOException e) {

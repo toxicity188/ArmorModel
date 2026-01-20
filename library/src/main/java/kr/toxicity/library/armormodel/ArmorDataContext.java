@@ -18,9 +18,9 @@ final class ArmorDataContext {
 
     @NotNull ArmorDataResult build(@NotNull String namespace) {
         return new ArmorDataResult(
-                new ArmorNamespaceKey(namespace, "armor/" + resource.name().toLowerCase()),
-                armors.isEmpty() ? null : selectJson(0, armors),
-                armorTrims.isEmpty() ? null : selectJson(1, armorTrims)
+            new ArmorNamespaceKey(namespace, "armor/" + resource.name().toLowerCase()),
+            armors.isEmpty() ? null : selectJson(0, armors),
+            armorTrims.isEmpty() ? null : selectJson(1, armorTrims)
         );
     }
 }

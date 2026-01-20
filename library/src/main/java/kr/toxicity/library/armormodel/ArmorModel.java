@@ -9,15 +9,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public record ArmorModel(
-        @NotNull @Unmodifiable List<ArmorByteBuilder> builders,
-        @NotNull @Unmodifiable Map<ArmorResource, ArmorDataResult> resources,
-        @NotNull @Unmodifiable Map<String, ArmorTrimPalette> colors
+    @NotNull @Unmodifiable List<ArmorByteBuilder> builders,
+    @NotNull @Unmodifiable Map<ArmorResource, ArmorDataResult> resources,
+    @NotNull @Unmodifiable Map<String, ArmorTrimPalette> colors
 ) {
 
     public static final ArmorModel EMPTY = new ArmorModel(
-            Collections.emptyList(),
-            Collections.emptyMap(),
-            Collections.emptyMap()
+        Collections.emptyList(),
+        Collections.emptyMap(),
+        Collections.emptyMap()
     );
 
     public @NotNull ArmorDataResult resource(@NotNull ArmorResource resource) {
@@ -75,22 +75,22 @@ public record ArmorModel(
 
         public @NotNull ArmorModel build() {
             try (var context = new ArmorModelContext(
-                    Arrays.stream(ArmorResource.values())
-                            .map(value -> new ArmorDataContext(value, streamLoader))
-                            .toList(),
-                    namespace,
-                    nameMapper,
-                    flush
+                Arrays.stream(ArmorResource.values())
+                    .map(value -> new ArmorDataContext(value, streamLoader))
+                    .toList(),
+                namespace,
+                nameMapper,
+                flush
             )) {
                 context.loadArmor(armors);
                 context.loadArmorTrim(armorTrims);
                 return new ArmorModel(
-                        Collections.unmodifiableList(context.builders),
-                        context.results(),
-                        palettes.stream().collect(Collectors.toUnmodifiableMap(
-                                ArmorPaletteImage::name,
-                                p -> ArmorTrimPalette.from(p.image())
-                        ))
+                    Collections.unmodifiableList(context.builders),
+                    context.results(),
+                    palettes.stream().collect(Collectors.toUnmodifiableMap(
+                        ArmorPaletteImage::name,
+                        p -> ArmorTrimPalette.from(p.image())
+                    ))
                 );
             }
         }

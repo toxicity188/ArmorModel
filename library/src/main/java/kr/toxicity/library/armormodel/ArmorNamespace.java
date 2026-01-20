@@ -18,8 +18,8 @@ final class ArmorNamespace {
     final Builder items, textures, models;
 
     ArmorNamespace(
-            @NotNull ArmorModelContext context,
-            @NotNull String namespace
+        @NotNull ArmorModelContext context,
+        @NotNull String namespace
     ) {
         this.context = context;
         this.namespace = namespace;
@@ -44,7 +44,7 @@ final class ArmorNamespace {
         void add(@NotNull String name, @NotNull BufferedImage image) {
             add(name, image, img -> {
                 try (
-                        var buffer = new ByteArrayOutputStream()
+                    var buffer = new ByteArrayOutputStream()
                 ) {
                     ImageIO.write(img, "png", buffer);
                     return buffer.toByteArray();

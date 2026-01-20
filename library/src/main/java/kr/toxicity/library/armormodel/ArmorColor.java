@@ -8,10 +8,10 @@ public record ArmorColor(int a, int r, int g, int b) {
 
     public static @NotNull ArmorColor from(int value) {
         return new ArmorColor(
-                (value >> 24) & 0xFF,
-                (value >> 16) & 0xFF,
-                (value >> 8) & 0xFF,
-                value & 0xFF
+            (value >> 24) & 0xFF,
+            (value >> 16) & 0xFF,
+            (value >> 8) & 0xFF,
+            value & 0xFF
         );
     }
 

@@ -1,8 +1,9 @@
 import com.vanniktech.maven.publish.JavaLibrary
 import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
 
 plugins {
-    id("com.vanniktech.maven.publish") version "0.34.0"
+    id("com.vanniktech.maven.publish") version "0.36.0"
     signing
 }
 
@@ -44,12 +45,12 @@ mavenPublishing  {
     coordinates("io.github.toxicity188", artifactBaseId, artifactVersion)
     configure(JavaLibrary(
         javadocJar = JavadocJar.None(),
-        sourcesJar = true,
+        sourcesJar = SourcesJar.Sources(),
     ))
     pom {
         name = artifactBaseId
         description = "12-limb Minecraft armor model."
-        inceptionYear = "2025"
+        inceptionYear = "2025-2026"
         url = "https://github.com/toxicity188/ArmorModel/"
         licenses {
             license {

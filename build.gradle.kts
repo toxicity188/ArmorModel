@@ -6,7 +6,7 @@ allprojects {
     apply(plugin = "java")
 
     group = "kr.toxicity.library.armormodel"
-    version = "1.0.1"
+    version = "1.0.2"
 
     repositories {
         mavenCentral()

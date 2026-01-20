@@ -17,10 +17,10 @@ final class ArmorModelContext implements AutoCloseable {
     private Map<ArmorResource, ArmorDataResult> results;
 
     ArmorModelContext(
-            @NotNull List<ArmorDataContext> data,
-            @NotNull String namespace,
-            @NotNull ArmorNameMapper nameMapper,
-            boolean flush
+        @NotNull List<ArmorDataContext> data,
+        @NotNull String namespace,
+        @NotNull ArmorNameMapper nameMapper,
+        boolean flush
     ) {
         this.data = data;
         this.namespace = new ArmorNamespace(this, namespace);
@@ -45,12 +45,12 @@ final class ArmorModelContext implements AutoCloseable {
         synchronized (this) {
             if (results != null) return results;
             return results = Collections.unmodifiableMap(data.stream()
-                    .collect(Collectors.toMap(
-                            c -> c.resource,
-                            c -> c.build(namespace.namespace),
-                            (f, s) -> s,
-                            () -> new EnumMap<>(ArmorResource.class)
-                    )));
+                .collect(Collectors.toMap(
+                    c -> c.resource,
+                    c -> c.build(namespace.namespace),
+                    (f, s) -> s,
+                    () -> new EnumMap<>(ArmorResource.class)
+                )));
         }
     }
 

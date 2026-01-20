@@ -12,7 +12,7 @@ public record ArmorTrimPalette(@NotNull @Unmodifiable List<ArmorColor> palettes)
     public static @NotNull ArmorTrimPalette from(@NotNull BufferedImage image) {
         assert image.getHeight() == 1 && image.getWidth() == 8;
         return new ArmorTrimPalette(IntStream.range(0, 8)
-                .mapToObj(i -> ArmorColor.from(image.getRGB(i, 0)))
-                .toList());
+            .mapToObj(i -> ArmorColor.from(image.getRGB(i, 0)))
+            .toList());
     }
 }

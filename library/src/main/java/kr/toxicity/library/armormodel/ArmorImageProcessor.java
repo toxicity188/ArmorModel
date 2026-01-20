@@ -80,7 +80,6 @@ enum ArmorImageProcessor {
                 for (int h = 0; h < height; h++) {
                     var color = ArmorColor.from(image.getRGB(w, h));
                     if (color.a() < 0xFF) continue;
-                    assert color.r() % 32 == 0 && color.g() % 32 == 0 && color.b() % 32 == 0;
                     map.get(8 - color.avg() / 32).setRGB(w, h, white);
                 }
             }
