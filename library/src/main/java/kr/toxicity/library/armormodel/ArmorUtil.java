@@ -9,7 +9,7 @@ final class ArmorUtil {
     public static final JsonObject EMPTY = new JsonObject();
 
     static {
-        EMPTY.addProperty("type", "minecraft:empty");
+        EMPTY.addProperty("type", "empty");
     }
 
     private ArmorUtil() {
@@ -18,11 +18,11 @@ final class ArmorUtil {
 
     public static @NotNull JsonObject modelJson(@NotNull String modelName, int tint) {
         var json = new JsonObject();
-        json.addProperty("type", "minecraft:model");
+        json.addProperty("type", "model");
         json.addProperty("model", modelName);
         var tints = new JsonArray();
         var tintModelData = new JsonObject();
-        tintModelData.addProperty("type", "minecraft:custom_model_data");
+        tintModelData.addProperty("type", "custom_model_data");
         tintModelData.addProperty("index", tint);
         tintModelData.addProperty("default", ArmorDataResult.WHITE_INDEX);
         tints.add(tintModelData);
@@ -39,15 +39,15 @@ final class ArmorUtil {
 
     public static @NotNull JsonObject compositeJson(@NotNull JsonArray array) {
         var json = new JsonObject();
-        json.addProperty("type", "minecraft:composite");
+        json.addProperty("type", "composite");
         json.add("models", array);
         return json;
     }
 
     public static @NotNull JsonObject selectJson(int index, @NotNull JsonArray array) {
         var json = new JsonObject();
-        json.addProperty("type", "minecraft:select");
-        json.addProperty("property", "minecraft:custom_model_data");
+        json.addProperty("type", "select");
+        json.addProperty("property", "custom_model_data");
         json.addProperty("index", index);
         json.add("fallback", EMPTY);
         json.add("cases", array);

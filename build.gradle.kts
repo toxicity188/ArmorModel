@@ -6,22 +6,22 @@ allprojects {
     apply(plugin = "java")
 
     group = "kr.toxicity.library.armormodel"
-    version = "1.0.2"
+    version = "1.1.0"
 
     repositories {
         mavenCentral()
     }
 
     dependencies {
-        testImplementation(platform("org.junit:junit-bom:5.13.4"))
+        testImplementation(platform("org.junit:junit-bom:6.0.3"))
         testImplementation("org.junit.jupiter:junit-jupiter")
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-        compileOnly("org.projectlombok:lombok:1.18.42")
-        annotationProcessor("org.projectlombok:lombok:1.18.42")
+        compileOnly("org.projectlombok:lombok:1.18.46")
+        annotationProcessor("org.projectlombok:lombok:1.18.46")
 
-        testCompileOnly("org.projectlombok:lombok:1.18.42")
-        testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
+        testCompileOnly("org.projectlombok:lombok:1.18.46")
+        testAnnotationProcessor("org.projectlombok:lombok:1.18.46")
     }
 
     tasks {

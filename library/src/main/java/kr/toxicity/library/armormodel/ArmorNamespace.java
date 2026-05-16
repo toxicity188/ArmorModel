@@ -14,19 +14,22 @@ final class ArmorNamespace {
 
     private final ArmorModelContext context;
     final String namespace;
+    final String itemPath;
 
     final Builder items, textures, models;
 
     ArmorNamespace(
         @NotNull ArmorModelContext context,
-        @NotNull String namespace
+        @NotNull String namespace,
+        @NotNull String itemPath
     ) {
         this.context = context;
         this.namespace = namespace;
+        this.itemPath = itemPath;
 
-        items = new Builder("assets/" + namespace + "/items/armor/");
-        textures = new Builder("assets/" + namespace + "/textures/item/armor/");
-        models = new Builder("assets/" + namespace + "/models/armor/");
+        items = new Builder("assets/" + namespace + "/items/" + itemPath + "/");
+        textures = new Builder("assets/" + namespace + "/textures/item/" + itemPath + "/");
+        models = new Builder("assets/" + namespace + "/models/" + itemPath + "/");
     }
 
     @RequiredArgsConstructor

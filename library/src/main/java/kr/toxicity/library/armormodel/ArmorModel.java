@@ -35,6 +35,7 @@ public record ArmorModel(
         private List<ArmorImage> armorTrims = Collections.emptyList();
         private List<ArmorPaletteImage> palettes = Collections.emptyList();
         private String namespace = "armormodel";
+        private String itemPath = "armor";
         private ArmorNameMapper nameMapper = ArmorNameMapper.DEFAULT;
         private boolean flush = true;
 
@@ -63,6 +64,11 @@ public record ArmorModel(
             return this;
         }
 
+        public @NotNull Builder itemPath(@NotNull String itemPath) {
+            this.itemPath = Objects.requireNonNull(itemPath);
+            return this;
+        }
+
         public @NotNull Builder nameMapper(@NotNull ArmorNameMapper nameMapper) {
             this.nameMapper = Objects.requireNonNull(nameMapper);
             return this;
@@ -79,6 +85,7 @@ public record ArmorModel(
                     .map(value -> new ArmorDataContext(value, streamLoader))
                     .toList(),
                 namespace,
+                itemPath,
                 nameMapper,
                 flush
             )) {

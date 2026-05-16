@@ -19,11 +19,12 @@ final class ArmorModelContext implements AutoCloseable {
     ArmorModelContext(
         @NotNull List<ArmorDataContext> data,
         @NotNull String namespace,
+        @NotNull String itemPath,
         @NotNull ArmorNameMapper nameMapper,
         boolean flush
     ) {
         this.data = data;
-        this.namespace = new ArmorNamespace(this, namespace);
+        this.namespace = new ArmorNamespace(this, namespace, itemPath);
         this.nameMapper = nameMapper;
         this.flush = flush;
     }
@@ -47,7 +48,7 @@ final class ArmorModelContext implements AutoCloseable {
             return results = Collections.unmodifiableMap(data.stream()
                 .collect(Collectors.toMap(
                     c -> c.resource,
-                    c -> c.build(namespace.namespace),
+                    c -> c.build(namespace.namespace, namespace.itemPath),
                     (f, s) -> s,
                     () -> new EnumMap<>(ArmorResource.class)
                 )));
@@ -63,11 +64,11 @@ final class ArmorModelContext implements AutoCloseable {
     }
 
     @NotNull String textureNamespace(@NotNull String name) {
-        return namespace.namespace + ":item/armor/" + textureName(name);
+        return namespace.namespace + ":item/" + namespace.itemPath + "/" + textureName(name);
     }
 
     @NotNull String modelNamespace(@NotNull String name) {
-        return namespace.namespace + ":armor/" + modelName(name);
+        return namespace.namespace + ":" + namespace.itemPath + "/" + modelName(name);
     }
 
     @Override

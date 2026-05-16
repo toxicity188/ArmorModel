@@ -20,9 +20,9 @@ signing {
 }
 
 dependencies {
-    compileOnly("org.jetbrains:annotations:26.0.2-1")
+    compileOnly("org.jetbrains:annotations:26.1.0")
     listOf(
-        "com.google.code.gson:gson:2.13.2",
+        "com.google.code.gson:gson:2.14.0",
         "it.unimi.dsi:fastutil:8.5.18"
     ).forEach {
         compileOnly(it)

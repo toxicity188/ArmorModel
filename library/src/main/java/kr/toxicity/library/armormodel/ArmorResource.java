@@ -24,10 +24,6 @@ public enum ArmorResource {
     ;
     private final @NotNull String path;
 
-    public @NotNull String path() {
-        return path;
-    }
-
     public @NotNull ArmorData read(@NotNull StreamLoader loader) {
         try (
             var stream = loader.load(path);
