@@ -1,3 +1,10 @@
+/*
+ * This source file is part of ArmorModel.
+ * Copyright (c) 2025 toxicity188
+ * Licensed under the MIT License.
+ * See LICENSE.md file for full license text.
+ */
+
 package kr.toxicity.library.armormodel;
 
 import it.unimi.dsi.fastutil.ints.IntList;

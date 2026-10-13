@@ -5,6 +5,7 @@ import com.vanniktech.maven.publish.SourcesJar
 plugins {
     alias(libs.plugins.conventions.standard)
     id("com.vanniktech.maven.publish") version "0.37.0"
+    id("dev.yumi.gradle.licenser") version "4.0.+"
     signing
 }
 
@@ -18,6 +19,12 @@ java {
 
 signing {
     useGpgCmd()
+}
+
+license {
+    rule(rootProject.file("LICENSE_HEADER"))
+    include("**/*.java")
+    exclude("**/*.properties")
 }
 
 dependencies {
