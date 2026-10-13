@@ -3,7 +3,8 @@ import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.SourcesJar
 
 plugins {
-    id("com.vanniktech.maven.publish") version "0.36.0"
+    alias(libs.plugins.conventions.standard)
+    id("com.vanniktech.maven.publish") version "0.37.0"
     signing
 }
 
@@ -23,7 +24,7 @@ dependencies {
     compileOnly("org.jetbrains:annotations:26.1.0")
     listOf(
         "com.google.code.gson:gson:2.14.0",
-        "it.unimi.dsi:fastutil:8.5.18"
+        "it.unimi.dsi:fastutil:8.5.19"
     ).forEach {
         compileOnly(it)
         testImplementation(it)
