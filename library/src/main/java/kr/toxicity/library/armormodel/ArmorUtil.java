@@ -11,6 +11,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Internal JSON construction utilities for Minecraft 1.21.4+ item model definitions.
+ */
 final class ArmorUtil {
 
     public static final JsonObject EMPTY = new JsonObject();

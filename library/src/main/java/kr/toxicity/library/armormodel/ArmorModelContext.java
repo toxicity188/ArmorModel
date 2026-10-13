@@ -13,6 +13,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Internal compilation session coordinating bone data contexts, namespace layouts,
+ * and byte builder generation.
+ */
 final class ArmorModelContext implements AutoCloseable {
 
     final List<ArmorDataContext> data;

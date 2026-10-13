@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Function;
 
+/**
+ * Internal resource pack directory path resolver and asset registrant for a specific namespace.
+ */
 final class ArmorNamespace {
 
     private final ArmorModelContext context;

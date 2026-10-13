@@ -12,6 +12,12 @@ import org.jetbrains.annotations.NotNull;
 
 import static kr.toxicity.library.armormodel.ArmorUtil.selectJson;
 
+/**
+ * Internal compilation context for an individual armor bone piece.
+ * <p>
+ * Accumulates base armor and trim {@code select} case rules generated across all registered
+ * armor sets and trims for this specific bone.
+ */
 final class ArmorDataContext {
     final ArmorResource resource;
     final ArmorData data;

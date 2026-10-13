@@ -16,18 +16,49 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Represents raw geometry and texture mappings for a Minecraft armor bone model.
+ * <p>
+ * Manages texture references and cube element definitions used when decomposing armor parts
+ * for packet-based entity rendering and client item models.
+ * <p>
+ * Example:
+ * <pre>{@code
+ * ArmorData filtered = data.ofTextures("armormodel:item/armor/copper_armor", "armormodel:item/armor/bolt_armor_1");
+ * String json = filtered.toJson();
+ * }</pre>
+ *
+ * @param textures map of texture keys (e.g., "0", "1", "particle") to texture paths
+ * @param elements list of model geometry cube elements
+ * @since 1.2.0
+ */
 public record ArmorData(
     @NotNull Map<String, String> textures,
     @NotNull List<JsonElement> elements
 ) {
+    /**
+     * Shared {@link Gson} instance for serializing and deserializing armor model definitions.
+     */
     public static final Gson GSON = new GsonBuilder()
         .disableHtmlEscaping()
         .create();
 
+    /**
+     * Serializes this armor model data into JSON format.
+     *
+     * @return JSON string representing this model
+     */
     public @NotNull String toJson() {
         return GSON.toJson(this);
     }
 
+    /**
+     * Filters bone geometry elements according to provided armor and armor trim texture keys.
+     *
+     * @param armor base armor texture key, or null to exclude layer 0 elements
+     * @param armorTrim armor trim texture key, or null to exclude layer 1 trim elements
+     * @return new {@link ArmorData} containing only elements referencing available textures
+     */
     public @NotNull ArmorData ofTextures(@Nullable String armor, @Nullable String armorTrim) {
         var map = new HashMap<String, String>(3);
         if (armor != null) map.put("0", armor);

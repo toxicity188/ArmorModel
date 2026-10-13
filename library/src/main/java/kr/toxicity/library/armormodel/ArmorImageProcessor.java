@@ -16,6 +16,9 @@ import java.awt.image.BufferedImage;
 
 import static kr.toxicity.library.armormodel.ArmorUtil.*;
 
+/**
+ * Internal processor handling texture slicing, model generation, and trim luminance splitting.
+ */
 enum ArmorImageProcessor {
     ARMOR {
         @Override
