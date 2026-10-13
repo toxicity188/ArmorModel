@@ -11,11 +11,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public record ArmorData(
     @NotNull Map<String, String> textures,
@@ -29,16 +28,27 @@ public record ArmorData(
         return GSON.toJson(this);
     }
 
-    public @NotNull ArmorData ofTextures(@NotNull String... textures) {
-        var map = new HashMap<String, String>();
-        var i = 0;
-        for (String texture : textures) {
-            map.put(Integer.toString(i++), texture);
-        }
-        map.put("particle", textures[0]);
+    public @NotNull ArmorData ofTextures(@Nullable String armor, @Nullable String armorTrim) {
+        var map = new HashMap<String, String>(3);
+        if (armor != null) map.put("0", armor);
+        if (armorTrim != null) map.put("1", armorTrim);
+        map.put("particle", armor != null ? armor : armorTrim);
         return new ArmorData(
             Collections.unmodifiableMap(map),
-            elements
+            elements.stream()
+                .filter(element -> map.keySet().containsAll(textureIndex(element)))
+                .toList()
         );
+    }
+
+    private static @NotNull Set<String> textureIndex(@NotNull JsonElement element) {
+        return Objects.requireNonNull(element.getAsJsonObject().get("faces"))
+            .getAsJsonObject()
+            .entrySet()
+            .stream()
+            .map(Map.Entry::getValue)
+            .map(v -> Objects.requireNonNull(v.getAsJsonObject().get("texture")).getAsString())
+            .map(s -> s.substring(1))
+            .collect(Collectors.toUnmodifiableSet());
     }
 }

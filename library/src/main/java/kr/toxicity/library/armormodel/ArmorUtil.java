@@ -45,6 +45,7 @@ final class ArmorUtil {
     }
 
     public static @NotNull JsonObject compositeJson(@NotNull JsonArray array) {
+        if (array.size() == 1) return array.get(0).getAsJsonObject();
         var json = new JsonObject();
         json.addProperty("type", "composite");
         json.add("models", array);
